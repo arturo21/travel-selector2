@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html data-theme="light">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/icomoon.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+		<link href="css/jquery-ui.min.css" rel="stylesheet">
+		<link href="css/estilos.css" rel="stylesheet">
+	</head>
+	<body>
+		<main id="seleccionadordevuelos" class="container">
+			<div class="control mb-3">
+				<i class="icon-airplane"></i>
+				<label class="radio">
+					<input type="radio" name="tipoboleto" id="soloida" class="ml-2"> Ida
+				</label>
+				<label class="radio">
+					<input type="radio" name="tipoboleto" id="idayvuelta"> Ida y Vuelta
+				</label>
+			</div>
+			<section class="container">
+				<section class="grid grid-cols-6 gap-2">
+					<div>
+						<!--ORIGEN !-->
+						<!--COLOCAR SELECT CON LOS ORIGENES !-->
+						<p>
+							<i class="icon-location2"></i><span>Origen</span> 
+						</p>
+						<div class="select">
+							<select id="origenes" name="origenes"></select>
+						</div>
+					</div>
+					<div>
+						<!--DESTINO !-->
+						<!--COLOCAR SELECT CON LOS DESTINOS !-->
+						<p>
+							<i class="icon-location2"></i><span>Destino</span> 
+						</p>
+						<div class="select">
+							<select id="destinossel" name="destinossel"></select>
+						</div>
+					</div>
+					<div>
+						<p>
+							<i class="icon-calendar"></i><span>Fecha(s)</span> 
+						</p>
+						<!--FECHAS !-->
+						<!--COLOCAR DATEPICKER SEGÚN ELECCIÓN SI IDA O IDA Y VUELTA !-->
+						<div class="divblanco"><span id="fechaspersinput" class="input inputnowrap" data-theme="light">2024-12-12, 2024-12-30</span></div>
+					</div>
+					<div>
+						<p>
+							<i class="icon-users"></i><span>Pasajeros</span> 
+						</p>
+						<!--PASAJEROS !-->
+						<!--COLOCAR PASAJEROS SELECCIONADOS !-->
+						<div class="divblanco"><span id="pasajerospersinput" class="input inputnowrap" data-theme="light">Adultos:0,Niños:0,Bebes:0</span></div>
+					</div>
+					<div>
+						<p>
+							<i class="icon-user"></i><span>Datos Personales</span> 
+						</p>
+						<!--DATOS PERSONALES !-->
+						<!--COLOCAR DATOS INGRESADOS !-->
+						<div class="divblanco"><span id="datospersinput" class="input inputnowrap" data-theme="light">John Doe, johndoe@gmail.com, +1321654987</span></div>
+					</div>
+					<div>
+						<!--BOTON ENVIAR !-->
+						<button id="enviardatos" class="button mt-5">ENVIAR</button>
+					</div>
+				</section>
+			</section>
+			<section id="mensaje" class="mt-3">
+				
+			</section>
+			<section id="fechasfields" class="anchofechas mt-6" style="display: none;">
+				<!--FECHAS !-->
+				<div class="columns" id="fechasfields">
+					<!--FECHAS !-->
+					<div id="soloidabox" class="column">
+						<p>Ida</p>
+						<div id="datepickerida"></div>
+					</div>
+					<div id="vueltabox" class="column" style="display: none;">
+						<p>Vuelta</p>
+						<div id="datepickervuelta"></div>
+					</div>
+				</div>
+			</section>
+			<section id="pasajerosfields" style="display: none;width:300px;">
+				<p>Adultos</p>
+				<section class="columns" id="adultosbox">
+					<div id="minus" class="column">
+						<button class="button"><i class="icon-minus-solid">icon-minus-solid</i></button>
+					</div>
+					<div id="number" class="column">
+						<input type="text" name="numadultos" id="numadultos" value="0" disabled="true" class="button" style="background:white;color:black !important;width:50px;">
+					</div>
+					<div id="plus" class="column">
+						<button class="button"><i class="icon-add-solid">icon-add-solid</i></button>
+					</div>
+				</section>
+				<p>Niños</p>
+				<section id="niniosbox" class="columns">
+					<div id="minus" class="column is-one-third">
+						<button class="button"><i class="icon-minus-solid">icon-minus-solid</i></button>
+					</div>
+					<div id="number" class="column is-one-third">
+						<input type="text" name="numninios" id="numninios" value="0" disabled="true" class="button" style="background:white;color:black !important;width:50px;">
+					</div>
+					<div id="plus" class="column is-one-third">
+						<button class="button"><i class="icon-add-solid">icon-add-solid</i></button>
+					</div>
+				</section>
+				<p>Bebés</p>
+				<section id="bebesbox" class="columns is-gapless">
+					<div id="minus" class="column is-one-third">
+						<button class="button"><i class="icon-minus-solid">icon-minus-solid</i></button>
+					</div>
+					<div id="number" class="column is-one-third ml-3">
+						<input type="text" name="numbebes" id="numbebes" value="0" disabled="true" class="button" style="background:white;color:black !important;width:50px;">
+					</div>
+					<div id="plus" class="column is-one-third">
+						<button class="button"><i class="icon-add-solid">icon-add-solid</i></button>
+					</div>
+				</section>
+				<div class="control mt-3">
+					<div class="control">
+						<i class="icon-airplane"></i> Clase
+					</div>
+					<label class="radio">
+						<input type="radio" name="tipoasiento" id="ejecutivo" class="ml-2">Ejecutivo
+					</label>
+					<label class="radio">
+						<input type="radio" name="tipoasiento" id="turista">Turista
+					</label>
+				</div>
+			</section>
+			<section id="datosfields" class="cajadatosfields mt-6" style="display: none;">
+				<!--DATOS PERSONALES !-->
+				<div class="columns" style="flex-direction: column;">
+					<div class="column">
+						<p>Nombre y Apellido</p>
+						<!--NOMBRE Y APELLIDO !-->
+						<input type="text" name="nombreyapellido" id="nombreyapellido" placeholder="John Doe" class="input">
+					</div>
+					<div class="column">
+						<p>Teléfono</p>
+						<!--TELÉFONO !-->
+						<input type="text" name="telefonop" id="telefonop" placeholder="+1 552 552 52 52" class="input">
+					</div>
+					<div class="column">
+						<p>Correo Electrónico</p>
+						<!--CORREO ELECTRÓNICO !-->
+						<input type="email" name="correop" id="correop" placeholder="johndoe@gmail.com" class="input">
+					</div>
+				</div>
+				<div class="control mt-0">
+				</div>
+			</section>
+		</main>
+		<script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>
